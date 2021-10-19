@@ -1,0 +1,72 @@
+= Java lab
+
+== Setup
+
+* Install JDK
+* Download and install maven
+* Create a maven project
+----
+ mvn archetype:generate -DgroupId=cs.java -DartifactId=lab -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+----
+* Create a class `Calculator`
+* Create test `CaluculatorTest`
+
+== Run Test
+
+----
+mvn clean verify
+java -cp target/lab-1.0-SNAPSHOT.jar cs.java.Calculator
+
+请输入要计算的表达式(由 + - * / ( ) 和数字组成) 如:(35+25)*3+10
+1+2*3+4
+转换的后缀表达式为：1 2 3 *4 ++
+运算结果为：11
+----
+
+== Method `change`
+
+To convert infix to postfix
+----
+Begin
+   initially push some special character say # into the stack
+   for each character ch from infix expression, do
+      if ch is alphanumeric character, then
+         add ch to postfix expression
+      else if ch = opening parenthesis (, then
+         push ( into stack
+      else if ch = closing parenthesis ), then
+         while stack is not empty and stack top ≠ (,
+            do pop and add item from stack to postfix expression
+         done
+
+         pop ( also from the stack
+      else
+         while stack is not empty AND precedence of ch <= precedence of stack top element, do
+            pop and add into postfix expression
+         done
+
+         push the newly coming character.
+   done
+
+   while the stack contains some remaining characters, do
+      pop and add to the postfix expression
+   done
+   return postfix
+End
+----
+
+== Method `calculate`
+.To compute the result from postfix notation
+* Convert the expression from infix to postfix notation
+* Push the operands into the stack in the order they appear
+* Whn any operator encounters, then pop two topmost operands for executing the operation
+* After execution, push the result obtained into the stack
+* After the complete execution of expression, the final result remains on the top of the stack.
+
+e.g.
+
+----
+Infix notation: (2+4) * (4+6)
+Post-fix notation: 2 4 + 4 6 + *
+Result: 60
+----
