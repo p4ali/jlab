@@ -1,4 +1,4 @@
-package cs.java;
+package cs.lab1;
 
 import org.junit.Assert;
 import org.junit.Before;

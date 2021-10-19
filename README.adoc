@@ -6,7 +6,7 @@
 * Download and install maven
 * Create a maven project
 ----
- mvn archetype:generate -DgroupId=cs.java -DartifactId=lab -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+ mvn archetype:generate -DgroupId=cs.lab1 -DartifactId=lab -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 ----
 * Create a class `Calculator`
 * Create test `CaluculatorTest`
@@ -15,7 +15,7 @@
 
 ----
 mvn clean verify
-java -cp target/lab-1.0-SNAPSHOT.jar cs.java.Calculator
+java -cp target/lab-1.0-SNAPSHOT.jar cs.lab1.Calculator
 
 请输入要计算的表达式(由 + - * / ( ) 和数字组成) 如:(35+25)*3+10
 1+2*3+4

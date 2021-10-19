@@ -1,4 +1,4 @@
-package cs.java;
+package cs.lab1;
 
 import java.util.Scanner;
 import java.util.Stack;
